@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
 
+## Setup develepment environment
+Install NodeJS. Make sure node js version is 6.9.0 or higher, together with NPM 3 or higher.
+After than if angular-CLI is not installed then install it using command `npm install -g @angular/cli@latest`.
+
+## Steps to run the project
+Download(clone) the project. After that go inside the project folder using command line and run `npm install` to install the dependencies.
+Now to run the project see the development section of this readme file. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
