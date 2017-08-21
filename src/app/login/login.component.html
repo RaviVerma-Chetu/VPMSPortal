@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <form class="form-login" [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)">
+              <h4>Login.</h4>
+              <div class="form-group"[ngClass]="{
+                'has-error': !loginForm.controls['userName'].valid && (loginForm.controls['userName'].dirty || loginForm.controls['userName'].touched),
+                'has-success': loginForm.controls['userName'].valid && (loginForm.controls['userName'].dirty || loginForm.controls['userName'].touched)}                
+                ">
+                <input type="text" [formControl]="loginForm.controls['userName']" class="form-control input-sm chat-input" placeholder="username" />
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!loginForm.controls['userName'].valid && (loginForm.controls['userName'].dirty || loginForm.controls['userName'].touched)">Username is required</span>
+              </div>
+              <div class="form-group" [ngClass]="{
+                'has-error': !loginForm.controls['userPassword'].valid && (loginForm.controls['userPassword'].dirty || loginForm.controls['userPassword'].touched),
+                'has-success': loginForm.controls['userPassword'].valid && (loginForm.controls['userPassword'].dirty || loginForm.controls['userPassword'].touched)}                
+                ">
+                <input type="text" [formControl]="loginForm.controls['userPassword']" class="form-control input-sm chat-input" placeholder="password" />
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!loginForm.controls['userPassword'].valid && (loginForm.controls['userPassword'].dirty || loginForm.controls['userPassword'].touched)">Password is required</span>
+              </div>
+              <div class="wrapper">
+              <span class="group-btn">     
+                  <button type="submit" class="btn btn-primary btn-md" [disabled]="!loginForm.valid">login <i class="fa fa-sign-in"></i></button>
+              </span>
+              </div>
+            </form>
+        
+        </div>
+    </div>
+</div>
