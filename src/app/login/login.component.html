@@ -15,7 +15,7 @@
                 'has-error': !loginForm.controls['userPassword'].valid && (loginForm.controls['userPassword'].dirty || loginForm.controls['userPassword'].touched),
                 'has-success': loginForm.controls['userPassword'].valid && (loginForm.controls['userPassword'].dirty || loginForm.controls['userPassword'].touched)}                
                 ">
-                <input type="text" [formControl]="loginForm.controls['userPassword']" class="form-control input-sm chat-input" placeholder="password" />
+                <input type="password" [formControl]="loginForm.controls['userPassword']" class="form-control input-sm chat-input" placeholder="password" />
                 <!--<br/>-->
                 <span class="text-danger" *ngIf="!loginForm.controls['userPassword'].valid && (loginForm.controls['userPassword'].dirty || loginForm.controls['userPassword'].touched)">Password is required</span>
               </div>

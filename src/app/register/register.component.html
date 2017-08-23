@@ -1,3 +1,74 @@
-<p>
-  register works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <form class="form-register" [formGroup]="registerForm" (ngSubmit)="doRegister(registerForm.value)">
+              <h4>Register</h4>
+              <div class="form-group"[ngClass]="{
+                'has-error': !registerForm.controls['firstName'].valid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched),
+                'has-success': registerForm.controls['firstName'].valid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)}                
+                ">
+                <input type="text" [formControl]="registerForm.controls['firstName']" class="form-control input-sm chat-input" placeholder="First Name" />
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!registerForm.controls['firstName'].valid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)">First Name is required</span>
+              </div>
+              <div class="form-group" [ngClass]="{
+                'has-error': !registerForm.controls['lastName'].valid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched),
+                'has-success': registerForm.controls['lastName'].valid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)}                
+                ">
+                <input type="text" [formControl]="registerForm.controls['lastName']" class="form-control input-sm chat-input" placeholder="Last Name" />
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!registerForm.controls['lastName'].valid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">Last Name is required</span>
+              </div>
+                 <div class="form-group"[ngClass]="{
+                'has-error': !registerForm.controls['userName'].valid && (registerForm.controls['userName'].dirty || registerForm.controls['userName'].touched),
+                'has-success': registerForm.controls['userName'].valid && (registerForm.controls['userName'].dirty || registerForm.controls['userName'].touched)}                
+                ">
+                <input type="text" [formControl]="registerForm.controls['userName']" class="form-control input-sm chat-input" placeholder="User Name" />
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!registerForm.controls['userName'].valid && (registerForm.controls['userName'].dirty || registerForm.controls['userName'].touched)">Username is required</span>
+              </div>
+              <div class="form-group" [ngClass]="{
+                'has-error': !registerForm.controls['password'].valid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched),
+                'has-success': registerForm.controls['password'].valid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)}                
+                ">
+                <input type="password" [formControl]="registerForm.controls['password']" class="form-control input-sm chat-input" placeholder="Password" validateEqualTo="registerForm.controls['confirmPassword']"/>
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!registerForm.controls['password'].valid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">Password is required</span>
+                </div>
+              <div class="form-group" [ngClass]="{
+                'has-error': !registerForm.controls['confirmPassword'].valid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched),
+                'has-success': registerForm.controls['confirmPassword'].valid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)}                
+                ">
+                <input type="password" [formControl]="registerForm.controls['confirmPassword']" class="form-control input-sm chat-input" placeholder="Confirm Password"/>
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!registerForm.controls['confirmPassword'].valid && (registerForm.controls['confirmPassword'].dirty || registerForm.controls['confirmPassword'].touched)">Confirm Password is required</span>
+                <span class="text-danger" *ngIf= "(registerForm.controls['confirmPassword'].dirty && registerForm.controls['confirmPassword'].touched) && registerForm.controls['confirmPassword'].valid && registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value">Password do not match</span>
+              </div>
+               <div class="form-group" [ngClass]="{
+                'has-error': !registerForm.controls['emailId'].valid && (registerForm.controls['emailId'].dirty || registerForm.controls['emailId'].touched),
+                'has-success': registerForm.controls['emailId'].valid && (registerForm.controls['emailId'].dirty || registerForm.controls['emailId'].touched)}                
+                ">
+                <input type="text" [formControl]="registerForm.controls['emailId']" class="form-control input-sm chat-input" placeholder="Email">
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!registerForm.controls['emailId'].valid && (registerForm.controls['emailId'].dirty || registerForm.controls['emailId'].touched) &&!registerForm.controls['emailId'].errors.pattern">Email is required</span>
+                <span class="text-danger" *ngIf="registerForm.controls['emailId'].errors && registerForm.controls['emailId'].errors.pattern">
+                Email is invalid </span>
+              </div>
+               <div class="form-group" [ngClass]="{
+                'has-error': !registerForm.controls['mobileNumber'].valid && (registerForm.controls['mobileNumber'].dirty || registerForm.controls['mobileNumber'].touched),
+                'has-success': registerForm.controls['mobileNumber'].valid && (registerForm.controls['mobileNumber'].dirty || registerForm.controls['mobileNumber'].touched)}                
+                ">
+                <input type="number" [formControl]="registerForm.controls['mobileNumber']" class="form-control input-sm chat-input" placeholder="Mobile Number" />
+                <!--<br/>-->
+                <span class="text-danger" *ngIf="!registerForm.controls['mobileNumber'].valid && (registerForm.controls['mobileNumber'].dirty || registerForm.controls['mobileNumber'].touched)">Mobile number is required</span>
+              </div>             
+              <div class="wrapper">
+              <span class="group-btn">     
+                  <button type="submit" class="btn btn-primary btn-md" [disabled]="!registerForm.valid">Register <i class="fa fa-sign-in"></i></button>
+              </span>
+              </div>
+            </form>
+        
+        </div>
+    </div>
+</div>
