@@ -16,9 +16,15 @@ export class AuthenticationService {
                 console.log(response.json());
                 // save the token in local storage
             });
-    }
- 
+    } 
     logout() {
         // remove user from local storage to log user out
+    }
+    register(firstName:string,lastName:string,userName:string,password:string,emailId:string,mobileNumber:string,)
+    {
+        return this.http.post(appConfig.apiUrl+'/auth/register',{Firstname:firstName,Lastname:lastName,Password:password,Email:emailId,Phonenumber:mobileNumber,Username:userName})
+        .map((response:Response)=>{
+            console.log("Faisal")
+        });
     }
 }
