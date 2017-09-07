@@ -11,11 +11,13 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch:"full"},
   {path:'login', component:LoginComponent},
-  {path:'dashboard', component:DashboardComponent},
+  {path:'logout', component:LoginComponent},
+  {path:'dashboard', component:DashboardComponent, canActivate: [AuthGuard]},
   {path:'register', component:RegisterComponent}
 ]
 
@@ -33,7 +35,8 @@ const routes: Routes = [
     HttpModule
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+    if(this.router.url === '/logout'){
+      this.authenticationService.logout();
+      this.router.navigate(['/login']);
+    }
   }
 
   doLogin(form: any): void{

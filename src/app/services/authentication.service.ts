@@ -14,12 +14,23 @@ export class AuthenticationService {
             .map((response: Response) => {
                 // login successful return
                 console.log(response.json());
+                if(response.json().isAuthenticated){
+                    localStorage.setItem('currentUser', JSON.stringify(response));
+                }
                 // save the token in local storage
             });
     } 
     logout() {
-        // remove user from local storage to log user out
+        localStorage.removeItem('currentUser');
     }
+
+    isLoggedIn():boolean{
+        if (localStorage.getItem('currentUser')) {
+            return true;
+        }
+        return false;
+    }
+
     register(firstName:string,lastName:string,userName:string,password:string,emailId:string,mobileNumber:string,)
     {
         return this.http.post(appConfig.apiUrl+'/auth/register',{Firstname:firstName,Lastname:lastName,Password:password,Email:emailId,Phonenumber:mobileNumber,Username:userName})

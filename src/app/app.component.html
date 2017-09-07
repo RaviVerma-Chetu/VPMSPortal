@@ -4,12 +4,16 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">VPMS Portal</a>
     </div>
-    <!--<ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-    </ul>-->
-    <ul class="nav navbar-nav navbar-right">
+    <!--<ul class="nav navbar-nav navbar-right" *ngIf="!auth.isLoggedIn(); else authenticated">
       <li><a [routerLink]="['/register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>-->
+    <ul class="nav navbar-nav navbar-right" [hidden]="auth.isLoggedIn()">
+      <li><a [routerLink]="['/register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" [hidden]="!auth.isLoggedIn()">
+      <li><a [routerLink]="['/logout']"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
     </ul>
   </div>
 </nav>
@@ -18,6 +22,14 @@
       
   </div>
   <ng-template #login>Please login to continue.</ng-template>
+  <!--<ng-template #authenticated>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a [routerLink]="['/logout']"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+    </ul>  
+  </ng-template>
+  <ng-template #notauthenticated>
+    <li><a [routerLink]="['/register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+    <li><a [routerLink]="['/login']"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>  
+  </ng-template>-->
   <router-outlet></router-outlet>
-  <!--<a [routerLink]="['/register']">register</a>-->
 </div>
